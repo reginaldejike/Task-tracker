@@ -8,7 +8,7 @@ import About from './components/About';
 import { useState, useEffect } from 'react';
 
 function App() {
-  const [showAddtask, setShowAddTask] = useState(false);
+  const [showAddtask, setShowAddTask] = useState(true);
 
   const [tasks, setTasks] = useState([]);
 
@@ -23,25 +23,32 @@ function App() {
   //fetch tasks
 
   const fetchTasks = async () => {
-    const res = await fetch('http://localhost:5000/tasks');
+    const res = await fetch(
+      'https://my-json-server.typicode.com/pizzii/Task/tasks'
+    );
     const data = await res.json();
     return data;
   };
   //fetch task
   const fetchTask = async (id) => {
-    const res = await fetch(`http://localhost:5000/tasks/${id}`);
+    const res = await fetch(
+      `https://my-json-server.typicode.com/pizzii/Task/tasks/${id}`
+    );
     const data = await res.json();
     return data;
   };
   // Add Task
   const addTask = async (task) => {
-    const res = await fetch('http://localhost:5000/tasks', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(task),
-    });
+    const res = await fetch(
+      'https://my-json-server.typicode.com/pizzii/Task/tasks',
+      {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(task),
+      }
+    );
     const data = await res.json();
 
     setTasks([...tasks, data]);
@@ -51,7 +58,7 @@ function App() {
   };
   //Delete task
   const deleteTask = async (id) => {
-    await fetch(`http://localhost:5000/tasks/${id}`, {
+    await fetch(`https://my-json-server.typicode.com/pizzii/Task/tasks/${id}`, {
       method: 'DELETE',
     });
     setTasks(tasks.filter((task) => task.id !== id));
@@ -62,13 +69,16 @@ function App() {
     const taskToToggle = await fetchTask(id);
     const updatedTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
 
-    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(updatedTask),
-    });
+    const res = await fetch(
+      `https://my-json-server.typicode.com/pizzii/Task/tasks/${id}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(updatedTask),
+      }
+    );
 
     const data = await res.json();
     setTasks(
@@ -103,7 +113,7 @@ function App() {
               </>
             }
           />
-          <Route path='/about' element={<About />} />
+          <Route path='about' element={<About />} />
         </Routes>
         <Footer />
       </div>

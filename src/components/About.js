@@ -8,7 +8,7 @@ const About = () => {
         This is task tracker application that track and update your task to help
         keep track of your task or event
       </p>
-      <Link to='/'>Go Back</Link>
+      <Link to='/'>Add task</Link>
     </div>
   );
 };
