@@ -97,7 +97,7 @@ function App() {
 
         <Routes>
           <Route
-            path='/'
+            path='/Task-tracker'
             element={
               <>
                 {showAddtask && <AddTask onAdd={addTask} />}
@@ -113,7 +113,7 @@ function App() {
               </>
             }
           />
-          <Route path='about' element={<About />} />
+          <Route path='/Task-tracker/about' element={<About />} />
         </Routes>
         <Footer />
       </div>

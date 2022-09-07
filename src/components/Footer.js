@@ -3,7 +3,7 @@ const Footer = () => {
   return (
     <footer>
       <p>Copyright &copy; 2022</p>
-      <Link to='/about'>About</Link>
+      <Link to='/Task-tracker/about'>About</Link>
     </footer>
   );
 };
