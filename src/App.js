@@ -97,7 +97,7 @@ function App() {
 
         <Routes>
           <Route
-            path='/Task-tracker'
+            path='/Task-tracker/'
             element={
               <>
                 {showAddtask && <AddTask onAdd={addTask} />}
